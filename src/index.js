@@ -140,11 +140,12 @@ const prepareScene = (domElement, opts) => {
     showGrid(scene)
   }
   render(element, renderer, scene, camera, opts.trackball)
-  window.addEventListener(
+  if(opts.enableWindowResize ?? true) {
+    window.addEventListener(
     'resize',
     onWindowResize(element, camera, renderer),
-    false
-  )
+    false)
+  }
   scene.camera = camera
   scene.element = domElement
   return scene
